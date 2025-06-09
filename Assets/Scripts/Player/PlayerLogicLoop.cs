@@ -39,6 +39,6 @@ public class PlayerLogicLoop : ITickable
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
         Vector3 moveDelta = rotation * new Vector3(movement.x, 0f, movement.y);
 
-        playerMover.Move(moveDelta * (playerSettings.MovementSpeed * Time.fixedDeltaTime));
+        playerMover.Move(moveDelta * playerSettings.MovementSpeed * Time.fixedDeltaTime);
     }
 }
