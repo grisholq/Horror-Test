@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Customer : MonoBehaviour
@@ -65,6 +67,13 @@ public class Customer : MonoBehaviour
     {
         animator.SetBool("Walking", false);
     }
-    
-    
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.TryGetComponent<CoffeeCup>(out var coffee))
+        {
+            coffee.Destroy();
+            coffeeRecieved = true;
+        }
+    }
 }
