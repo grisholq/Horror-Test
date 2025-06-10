@@ -1,11 +1,25 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHUD : MonoBehaviour
 {
-    [SerializeField] private GameObject interactionDot;
+    [SerializeField] private Image interactionDot;
 
-    public void SetInteractionDotVisibility(bool visible)
+    public void SetInteractionDotActivity(bool active)
     {
-        interactionDot.SetActive(visible);
+        if (active)
+        {
+            interactionDot.color = SetColorAlpha(interactionDot.color, 1);
+        }
+        else
+        {
+            interactionDot.color = SetColorAlpha(interactionDot.color, 0.3f);
+        }
+    }
+
+    private Color SetColorAlpha(Color color, float alpha)
+    {
+        color.a = alpha;
+        return color;
     }
 }

@@ -38,6 +38,8 @@ public class PlayerDragSystem : IDragSource
 
     public void EndDrag()
     {
+        if (currentDragable == null) return;
+        
         currentDragable.OnDragEnd();
         currentDragable = null;
     }

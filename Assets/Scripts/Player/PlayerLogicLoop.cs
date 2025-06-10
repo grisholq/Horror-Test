@@ -72,14 +72,14 @@ public class PlayerLogicLoop : ITickable
             IDragable dragable = lookedObject?.GetComponentInParent<IDragable>();
             bool lookingAtDragable = lookingAtObject && dragable != null;
             
-            playerHUD.SetInteractionDotVisibility(lookingAtDragable && dragable.CanStartDrag);
+            playerHUD.SetInteractionDotActivity(lookingAtDragable && dragable.CanStartDrag);
             
             if (playerInput.LMBDown && lookingAtObject)
             {
                 if (lookingAtDragable && dragable.CanStartDrag)
                 {
                     playerDragSystem.StartDrag(dragable);
-                    playerHUD.SetInteractionDotVisibility(false);
+                    playerHUD.SetInteractionDotActivity(false);
                 }
             }
         }

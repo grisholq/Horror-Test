@@ -22,7 +22,7 @@ public class PlayerLook : MonoBehaviour
     
     private bool Look(Vector3 start, Vector3 direction, float distance, out GameObject result)
     {
-        bool hasHit = Physics.Raycast(start, direction, out RaycastHit hit, distance);
+        bool hasHit = Physics.Raycast(start, direction, out RaycastHit hit, distance, 255, QueryTriggerInteraction.Ignore);
         result = hasHit ? hit.collider.gameObject : null;
         return hasHit;
     }

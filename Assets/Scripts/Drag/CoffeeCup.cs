@@ -3,19 +3,22 @@ using UnityEngine;
 public class CoffeeCup : MonoBehaviour, IDragable
 {
     [SerializeField] private GameObject coffeeFull;
+    [SerializeField] private Rigidbody rigidbody;
+
+    public bool Full { get; set; }
+    public Rigidbody Rigidbody => rigidbody;
     
     public void Empty()
     {
+        Full = false;
         coffeeFull.SetActive(false);
     }
     
     public void MakeFull()
     {
+        Full = true;
         coffeeFull.SetActive(true);
     }
-
-    public void FreezeAndReset()
-    {}
     
     public void Destroy()
     {
@@ -24,7 +27,6 @@ public class CoffeeCup : MonoBehaviour, IDragable
     }
     
     #region IDragable implementation
-    [SerializeField] private Rigidbody rigidbody;
 
     public bool CanStartDrag { get; set; } = true;
     public Vector3 Position => transform.position;
